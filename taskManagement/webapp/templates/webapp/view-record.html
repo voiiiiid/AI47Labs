@@ -1,0 +1,11 @@
+{% extends 'webapp/base.html' %} {% block content %}
+
+<div class="card">
+  <div class="card-body">
+    <p><strong>Title: </strong> {{task.title }}</p>
+    <p><strong>Description: </strong> {{task.description}}</p>
+  </div>
+</div>
+<a href="{% url 'dashboard' %}" class="btn btn-info">Return</a>
+
+{% endblock %}

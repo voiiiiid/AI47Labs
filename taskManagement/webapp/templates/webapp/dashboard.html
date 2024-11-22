@@ -1,0 +1,43 @@
+{% extends 'webapp/base.html' %} {% block content%}
+
+<h5>Welcome to the dashboard page! {{user}}</h5>
+
+<hr />
+
+<a class="btn btn-outline-primary btn-sm" href="{% url 'create-task' %}"
+  >Create a new Record</a
+>
+
+<hr />
+
+<table class="table table-hover table-bordered">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">TITLE</th>
+      <th scope="col">VIEW</th>
+      <th scope="col">UPDATE</th>
+      <th scope="col">DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if records %} {% for rec in records %}
+    <tr>
+      <td>{{rec.id}}</td>
+      <td>{{rec.title}}</td>
+      <td>
+        <a href="{% url 'view-task' rec.id %}" class="btn btn-primary">View</a>
+      </td>
+      <td>
+        <a href="{% url 'update-task' rec.id %}" class="btn btn-info">Update</a>
+      </td>
+      <td>
+        <a href="{% url 'delete-task' rec.id %}" class="btn btn-danger"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    {% endfor %} {% endif %}
+  </tbody>
+</table>
+{% endblock %}
